@@ -4,6 +4,7 @@ CREATE TABLE web.raids
     name        TEXT    NOT NULL
   , type        TEXT    NOT NULL
   , size        TEXT    NOT NULL
+  , ordering    INTEGER NOT NULL
   , modifier    TEXT    NOT NULL
   , campaign    TEXT    NOT NULL
   , AP          TEXT    NOT NULL
