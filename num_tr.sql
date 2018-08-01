@@ -38,9 +38,11 @@ BEGIN
     _output := _input;
   END IF;
 
-  _output = trim(trailing '0' FROM _output);
-  _output = trim(trailing '.' FROM _output);
-  _output = _output || _modifier;
+  IF _modifier != '' THEN
+    _output = trim(trailing '0' FROM _output);
+    _output = trim(trailing '.' FROM _output);
+    _output = _output || _modifier;
+  END IF;
 
   return _output;
 END;

@@ -4,24 +4,39 @@
 // @description    Orcish script for tiers
 // @author         Goldstar labs
 // @include        https://stereolife.website/pub/*
-// @version        0.0.1
+// @include        https://armorgames.com/dawn-of-the-dragons-game/13509
+// @version        0.0.2
 // @grant          GM_xmlhttpRequest
 // @grant          GM_log
-// @grant          GM_getResourceText
+// @connect        18.218.243.237
 
 // ==/UserScript==
 ( function ( data ) {
     "use strict";
+    // Colors
+    var cl_ap_0 = '#E0E0A1';
+    var cl_ap_1 = '#F7F7B8';
 
+    var cl_os_0 = '#BEEBAA';
+    var cl_os_1 = '#D1FFBD';
 
-    /**
-     * switches between active and inactive
-     * @returns {undefined}
-     */
+    var cl_row_0 = '';
+    var cl_row_1 = '#D8D8D8';
+
+    var cl_bor_0 = '#9C9C9C';
+    var cl_back_0 = '#F5F5F5';
+
+    var cl_raid_s = '#FEFEFE';
+    var cl_raid_m = '#F4F400';
+    var cl_raid_l = '#E27100';
+    var cl_raid_e = '#F40000';
+    var cl_raid_c = '#4E7DDE';
+    var cl_raid_g = '#C30EC3';
+    var cl_raid_p = '#5FF262';
+
+    // Switches block between active and inactive
     var node_click = function ()
     {
-        console.log("test on_click");
-
         // Get current node status
         var status = this.getAttribute("class") === "active" ? "" : "active";
         // Reset all nodes status
@@ -46,38 +61,30 @@
         var wrapper = document.createElement ( "li" );
         wrapper.onclick = func;
 
+        wrapper.appendChild ( document.createElement('div') );
+
         if ( src )
         {
             GM_xmlhttpRequest({
-                method: 'POST',
-                url: 'http://18.218.243.237:3000/rpc/tiers_v1',
-                data: '{ "_name" : "Deadly Drakontos" }',
+                method: 'GET',
+                url: src,
                 headers: { 'Content-Type': 'application/json; charset=UTF-8' },
                 onload: function(r)
                 {
-                    wrapper.appendChild ( document.createElement('div') );
-
                     var table_content = document.createElement ('table');
-                    table_content.style.padding = "0 0 0 0";
-                    table_content.style.borderSpacing = "0";
 
+                    table_content.style.padding = "0 0 0 0";
+                    table_content.style.backgroundColor = cl_back_0;
+                    table_content.style.borderSpacing = "0";
                     table_content.style.width = '100%';
-                    table_content.setAttribute('border', '1');
-                    table_content.setAttribute('bgcolor', '#FFFFFF');
+                    table_content.style.border = 'thin solid ' + cl_bor_0;
+                    table_content.setAttribute('border', 1);
+                    table_content.style.borderCollapse = "collapse";
 
                     var table_body = document.createElement('tbody');
 
-                    //GM_log('***' + r.responseText);
-
                     var parsed_response = JSON.parse(r.responseText);
-                    parsed_response = JSON.parse(parsed_response);
-     
 
-                    console.log(JSON.parse(r.responseText));
-
-                    console.log(JSON.parse("{\"raids\" : [{\"name\" : \"Deadly Drakontos\", \"type\" : \"deadly\", \"size\" : \"gigantic\", \"modifier\" : \"Deadly , Aquatic , Dragon , Terror\", \"campaign\" : \"\", \"AP\" : \"5t\", \"OS\" : \"5t\", \"MS\" : \"1q\", \"tiers\" : [{\"difficulty\" : \"nightmare\", \"damage\" : \"1000000000000\", \"c\" : \"\", \"u\" : \"\", \"r\" : \"\", \"e\" : \"\", \"l\" : \"\", \"stats\" : \"46000\"},{\"difficulty\" : \"nightmare\", \"damage\" : \"5000000000000\", \"c\" : \"\", \"u\" : \"\", \"r\" : \"\", \"e\" : \"\", \"l\" : \"\", \"stats\" : \"240000\"},{\"difficulty\" : \"nightmare\", \"damage\" : \"10000000000000\", \"c\" : \"\", \"u\" : \"\", \"r\" : \"\", \"e\" : \"\", \"l\" : \"\", \"stats\" : \"309335\"},{\"difficulty\" : \"nightmare\", \"damage\" : \"20000000000000\", \"c\" : \"\", \"u\" : \"\", \"r\" : \"\", \"e\" : \"\", \"l\" : \"\", \"stats\" : \"325280\"},{\"difficulty\" : \"nightmare\", \"damage\" : \"30000000000000\", \"c\" : \"\", \"u\" : \"\", \"r\" : \"\", \"e\" : \"\", \"l\" : \"\", \"stats\" : \"333756\"},{\"difficulty\" : \"nightmare\", \"damage\" : \"40000000000000\", \"c\" : \"\", \"u\" : \"\", \"r\" : \"\", \"e\" : \"\", \"l\" : \"\", \"stats\" : \"345977\"},{\"difficulty\" : \"nightmare\", \"damage\" : \"50000000000000\", \"c\" : \"\", \"u\" : \"\", \"r\" : \"\", \"e\" : \"\", \"l\" : \"\", \"stats\" : \"355076\"},{\"difficulty\" : \"nightmare\", \"damage\" : \"100000000000000\", \"c\" : \"\", \"u\" : \"\", \"r\" : \"\", \"e\" : \"\", \"l\" : \"\", \"stats\" : \"523838\"},{\"difficulty\" : \"nightmare\", \"damage\" : \"150000000000000\", \"c\" : \"\", \"u\" : \"\", \"r\" : \"\", \"e\" : \"\", \"l\" : \"\", \"stats\" : \"711242\"},{\"difficulty\" : \"nightmare\", \"damage\" : \"200000000000000\", \"c\" : \"\", \"u\" : \"\", \"r\" : \"\", \"e\" : \"\", \"l\" : \"\", \"stats\" : \"738284\"},{\"difficulty\" : \"nightmare\", \"damage\" : \"300000000000000\", \"c\" : \"\", \"u\" : \"\", \"r\" : \"\", \"e\" : \"\", \"l\" : \"\", \"stats\" : \"808848\"},{\"difficulty\" : \"nightmare\", \"damage\" : \"400000000000000\", \"c\" : \"\", \"u\" : \"\", \"r\" : \"\", \"e\" : \"\", \"l\" : \"\", \"stats\" : \"973477\"},{\"difficulty\" : \"nightmare\", \"damage\" : \"600000000000000\", \"c\" : \"\", \"u\" : \"\", \"r\" : \"\", \"e\" : \"\", \"l\" : \"\", \"stats\" : \"1222249\"}]}]}"));
-
-                    GM_log('parse end');
 
                     /* parsing raids */
                     var i = 0;
@@ -89,11 +96,15 @@
                         var row_loot = document.createElement('tr');
                         var row_coeff = document.createElement('tr');
 
+                        row_damage.style.textAlign = "center";
+                        row_loot.style.textAlign = "center";
+                        row_coeff.style.textAlign = "center";
+
                         if (i%2 == 1)
                         {
-                            row_damage.style.backgroundColor = "#EDEDED";
-                            row_loot.style.backgroundColor = "#EDEDED";
-                            row_coeff.style.backgroundColor = "#EDEDED";
+                            row_damage.style.backgroundColor = cl_row_1;
+                            row_loot.style.backgroundColor = cl_row_1;
+                            row_coeff.style.backgroundColor = cl_row_1;
                         }
 
                         i++;
@@ -101,6 +112,41 @@
                         var raid_name = document.createElement('td');
                         raid_name.setAttribute('rowspan', '3');
                         raid_name.appendChild(document.createTextNode(raid.name));
+
+                        raid_name.style.textShadow = '1px 1px 1px black';
+
+                      //  raid_name.style['-webkit-text-stroke'] = '1px black';
+
+                        if (raid.size == 'small')
+                        {
+                            raid_name.style.color = cl_raid_s;
+                        }
+                        else
+                        if (raid.size == 'medium')
+                        {
+                            raid_name.style.color = cl_raid_m;
+                        }
+                        else
+                        if (raid.size == 'large')
+                        {
+                            raid_name.style.color = cl_raid_l;
+                        }
+                        else
+                        if (raid.size == 'epic')
+                        {
+                            raid_name.style.color = cl_raid_e;
+                        }
+                        else
+                        if (raid.size == 'colossal')
+                        {
+                            raid_name.style.color = cl_raid_c;
+                        }
+                        else
+                        if (raid.size == 'gigantic')
+                        {
+                            raid_name.style.color = cl_raid_g;
+                        }
+
                         row_damage.appendChild(raid_name);
 
                         table_body.appendChild(row_damage);
@@ -108,32 +154,30 @@
                         table_body.appendChild(row_coeff);
 
                         /* AP OS MS */
-                        var ap = document.createElement('td');
-                        ap.appendChild(document.createTextNode(raid.AP));
-                        row_damage.appendChild(ap);
+                        row_damage.insertCell(-1).innerHTML = 'AP';
+                        row_damage.insertCell(-1).innerHTML = raid.ap == null ? '' : raid.ap;
 
-                        var os = document.createElement('td');
-                        os.appendChild(document.createTextNode(raid.OS));
-                        row_loot.appendChild(os);
+                        row_loot.insertCell(-1).innerHTML = 'OS';
+                        row_loot.insertCell(-1).innerHTML = raid.os;
 
-                        var ms = document.createElement('td');
-                        ms.appendChild(document.createTextNode(raid.MS));
-                        row_coeff.appendChild(ms);
+                        row_coeff.insertCell(-1).innerHTML = 'MS';
+                        row_coeff.insertCell(-1).innerHTML = raid.ms;
 
-
+                        /* Tiers data */
                         for (var tier of raid.tiers)
                         {
-                            //  console.log(tier);
+                        //    var damage = document.createElement('td');
+                        //    damage.appendChild(document.createTextNode(tier.damage));
 
-                            var damage = document.createElement('td');
-                            damage.appendChild(document.createTextNode(tier.damage));
+                            var damage = row_damage.insertCell(-1);
+                            var loot = row_loot.insertCell(-1);
+                            var coeff = row_coeff.insertCell(-1);
 
+                            damage.innerHTML = tier.damage;
 
-                            var loot = document.createElement('td');
+                             var loot_str = '';
 
-                            var loot_str = '';
-
-                            if (tier.c.length > 0 && tier.u.length > 0 && tier.r.length > 0 && tier.e.length > 0)
+                            if (tier.c.length > 0 || tier.u.length > 0 || tier.r.length > 0 || tier.e.length > 0)
                             {
                                 loot_str += tier.c == undefined ? '' : tier.c;
                                 loot_str += '/';
@@ -147,44 +191,53 @@
                                 loot_str += tier.e == undefined ? '' : tier.e;
                             }
 
-                            if (tier.sp != undefined)
+                            if (tier.stats.length > 0)
                             {
                                 if (loot_str.length > 0)
                                 {
                                     loot_str += ' ';
                                 }
 
-                                loot_str += tier.sp;
+                                loot_str += tier.stats;
                             }
 
-                            loot.appendChild(document.createTextNode(loot_str));
 
+                            loot.innerHTML = loot_str;
 
-                            var coeff = document.createElement('td');
-                            coeff.appendChild(document.createTextNode(tier.ds));
+                            coeff.innerHTML = tier.dmgsp;
 
+                            if (raid.ap == tier.damage)
+                            {
+                                if (i%2 == 1)
+                                {
+                                    damage.style.backgroundColor = cl_ap_1;
+                                    loot.style.backgroundColor = cl_ap_1;
+                                    coeff.style.backgroundColor = cl_ap_1;
+                                }
+                                else
+                                {
+                                    damage.style.backgroundColor = cl_ap_0;
+                                    loot.style.backgroundColor = cl_ap_0;
+                                    coeff.style.backgroundColor = cl_ap_0;
+                                }
+                            }
 
                             if (raid.os == tier.damage)
                             {
                                 if (i%2 == 1)
                                 {
-                                    damage.style.backgroundColor = "#D1FFBD";
-                                    loot.style.backgroundColor = "#D1FFBD";
-                                    coeff.style.backgroundColor = "#D1FFBD";
+                                    damage.style.backgroundColor = cl_os_1;
+                                    loot.style.backgroundColor = cl_os_1;
+                                    coeff.style.backgroundColor = cl_os_1;
                                 }
                                 else
                                 {
-                                    damage.style.backgroundColor = "#BEEBAA";
-                                    loot.style.backgroundColor = "#BEEBAA";
-                                    coeff.style.backgroundColor = "#BEEBAA";
+                                    damage.style.backgroundColor = cl_os_0;
+                                    loot.style.backgroundColor = cl_os_0;
+                                    coeff.style.backgroundColor = cl_os_0;
                                 }
                             }
-
-                            row_damage.appendChild(damage);
-                            row_loot.appendChild(loot);
-                            row_coeff.appendChild(coeff);
                         }
-
                     }
 
                     table_content.appendChild(table_body);
@@ -195,9 +248,10 @@
 
         if(label)
         {
-          wrapper.appendChild ( document.createElement ( "button" ) );
-          wrapper.lastChild.appendChild ( document.createTextNode ( label ) );
+            wrapper.appendChild ( document.createElement ( "button" ) );
+            wrapper.lastChild.appendChild ( document.createTextNode ( label ) );
         }
+
         return wrapper;
     };
 
@@ -213,12 +267,7 @@
     {
         list.appendChild(node_create(node[0], node[1], node_click));
     }
-    /*
-    for (var counter = 0; counter < data.length; counter++)
-    {
-        list.appendChild(node_create(data[counter][0], data[counter][1], node_click));
-    }
-    */
+
 
     var styles = document.createElement ( "style" );
     styles.setAttribute ( "type", "text/css" );
@@ -244,9 +293,9 @@
     document.getElementsByTagName ( "body" )[0].appendChild ( list );
 } ) (
         [
-            [ "Elite", "elite query" ]
+            [ "", ""] ,
+            [ "Elite", "http://18.218.243.237:3000/rpc/tiers_v1?_name=&_type=Elite" ],
+            [ "Deadly", "http://18.218.243.237:3000/rpc/tiers_v1?_name=&_type=Deadly" ],
+            [ "Regular", "http://18.218.243.237:3000/rpc/tiers_v1?_name=&_type=Regular" ]
         ]
 );
-
-
-
