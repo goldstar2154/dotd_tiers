@@ -47,7 +47,7 @@ BEGIN
             FROM web.raids s
             WHERE (lower(s.name) = lower(_name) OR _name = '' OR _name IS NULL)
               AND (lower(s.type) = lower(_type) OR _type = '' OR _type IS NULL)
-            ORDER BY s.ordering, s.name) data
+            ORDER BY s.size_o, s.name) data
             )));
 END;
 $$ LANGUAGE plpgsql IMMUTABLE STRICT;
