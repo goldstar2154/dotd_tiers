@@ -1,9 +1,10 @@
-DROP FUNCTION web.tiers_v1(TEXT, TEXT);
+DROP FUNCTION web.tiers_v1(TEXT, TEXT, TEXT);
 
 CREATE FUNCTION web.tiers_v1
 (
-  IN _name TEXT
-, IN _type TEXT
+  IN _name   TEXT
+, IN _type   TEXT
+, IN _type_o TEXT
 )
 RETURNS JSON
 AS $$
@@ -47,6 +48,7 @@ BEGIN
             FROM web.raids s
             WHERE (lower(s.name) = lower(_name) OR _name = '' OR _name IS NULL)
               AND (lower(s.type) = lower(_type) OR _type = '' OR _type IS NULL)
+              AND (lower(s.type_o::TEXT) = lower(_type_o) OR _type_o = '' OR _type_o IS NULL )
             ORDER BY s.size_o, s.name) data
             )));
 END;

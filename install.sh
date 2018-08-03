@@ -21,6 +21,7 @@ GRANT web to postgres;
 GRANT usage ON schema web to web;
 GRANT select on web.raids to web;
 GRANT select on web.tiers to web;
-GRANT execute on function web.tiers_v1(TEXT, TEXT) to web;
+GRANT execute on function web.tiers_v1(TEXT, TEXT, TEXT) to web;
+
 
 /* making schema */

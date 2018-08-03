@@ -1,13 +1,30 @@
 // ==UserScript==
 // @name           Orcish inline tiers
 // @namespace      Goldstar
-// @description    Orcish script for tiers
+// @description    Inline tiers for Dawn of The Dragons game
 // @author         Goldstar labs
-// @include        https://stereolife.website/pub/*
-// @include        https://armorgames.com/dawn-of-the-dragons-game/13509
-// @version        0.0.2
+// @include        http://www.27thdimension.com/dotd/tierChartsStandalone.html
+// @include        http://www.kongregate.com/games/5thplanetgames/dawn-of-the-dragons*
+// @include        https://www.kongregate.com/games/5thplanetgames/dawn-of-the-dragons*
+// @include        http://www.kongregate.com/games/5thPlanetGames/dawn-of-the-dragons*
+// @include        https://www.kongregate.com/games/5thPlanetGames/dawn-of-the-dragons*
+// @include        http://kongregate.com/games/5thplanetgames/dawn-of-the-dragons*
+// @include        https://kongregate.com/games/5thplanetgames/dawn-of-the-dragons*
+// @include        http://kongregate.com/games/5thPlanetGames/dawn-of-the-dragons*
+// @include        https://kongregate.com/games/5thPlanetGames/dawn-of-the-dragons*
+// @include        http://www.dawnofthedragons.com/game*
+// @include        http://www.dawnofthedragons.com/
+// @include        http://www.dawnofthedragons.com
+// @include        http://dawnofthedragons.com/game*
+// @include        https://apps.facebook.com/dawnofthedragons*
+// @include        http://web1.dawnofthedragons.com/live_standalone*
+// @include        *newgrounds.com/portal/view/609826*
+// @include        http://dawnofthedragons.com/
+// @include        https://armorgames.com/dawn-of-the-dragons-game/13509*
+// @include        https://www.armorgames.com/dawn-of-the-dragons-game/13509*
+// @include        https://armorgames.com/play/13509/dawn-of-the-dragons*
+// @version        0.0.3
 // @grant          GM_xmlhttpRequest
-// @grant          GM_log
 // @connect        18.218.243.237
 
 // ==/UserScript==
@@ -24,6 +41,7 @@
     var cl_row_1 = '#D8D8D8';
 
     var cl_bor_0 = '#9C9C9C';
+    var cl_bor_1 = '#000000';
     var cl_back_0 = '#F5F5F5';
 
     var cl_raid_s = '#FEFEFE';
@@ -46,7 +64,7 @@
         }
         // Set active status to current node
         this.setAttribute ( "class", status );
-        this.parentNode.setAttribute("active",status);
+        this.parentNode.setAttribute("active", status);
     };
 
     /**
@@ -85,13 +103,10 @@
 
                     var parsed_response = JSON.parse(r.responseText);
 
-
                     /* parsing raids */
                     var i = 0;
                     for (var raid of parsed_response.raids)
                     {
-                        console.log(raid.name);
-
                         var row_damage = document.createElement('tr');
                         var row_loot = document.createElement('tr');
                         var row_coeff = document.createElement('tr');
@@ -100,22 +115,20 @@
                         row_loot.style.textAlign = "center";
                         row_coeff.style.textAlign = "center";
 
-                        if (i%2 == 1)
+                        row_damage.style.borderTop = 'thin solid ' + cl_bor_1;
+                        row_coeff.style.borderBottom = 'thin solid ' + cl_bor_1;
+
+                        if (i++%2 == 1)
                         {
                             row_damage.style.backgroundColor = cl_row_1;
                             row_loot.style.backgroundColor = cl_row_1;
                             row_coeff.style.backgroundColor = cl_row_1;
                         }
 
-                        i++;
-
                         var raid_name = document.createElement('td');
                         raid_name.setAttribute('rowspan', '3');
                         raid_name.appendChild(document.createTextNode(raid.name));
-
                         raid_name.style.textShadow = '1px 1px 1px black';
-
-                      //  raid_name.style['-webkit-text-stroke'] = '1px black';
 
                         if (raid.size == 'small')
                         {
@@ -166,16 +179,13 @@
                         /* Tiers data */
                         for (var tier of raid.tiers)
                         {
-                        //    var damage = document.createElement('td');
-                        //    damage.appendChild(document.createTextNode(tier.damage));
-
                             var damage = row_damage.insertCell(-1);
                             var loot = row_loot.insertCell(-1);
                             var coeff = row_coeff.insertCell(-1);
 
                             damage.innerHTML = tier.damage;
 
-                             var loot_str = '';
+                            var loot_str = '';
 
                             if (tier.c.length > 0 || tier.u.length > 0 || tier.r.length > 0 || tier.e.length > 0)
                             {
@@ -258,7 +268,7 @@
     var list = document.createElement ( "ul" );
     list.setAttribute ( "id", "NewInlineTierCharts" );
 
-    list.appendChild ( node_create ( "\u21C6", "", function () {
+    list.appendChild ( node_create ( "\u21C6", "", function (){
         this.parentNode.setAttribute("class",( this.parentNode.getAttribute ( "class" ) === "right" ? "" : "right" ));
     } ) );
 
@@ -294,8 +304,12 @@
 } ) (
         [
             [ "", ""] ,
-            [ "Elite", "http://18.218.243.237:3000/rpc/tiers_v1?_name=&_type=Elite" ],
-            [ "Deadly", "http://18.218.243.237:3000/rpc/tiers_v1?_name=&_type=Deadly" ],
-            [ "Regular", "http://18.218.243.237:3000/rpc/tiers_v1?_name=&_type=Regular" ]
+            [ "Elite 1", "http://18.218.243.237:3000/rpc/tiers_v1?_name=&_type=Elite&_type_o=0" ],
+            [ "Elite 2", "http://18.218.243.237:3000/rpc/tiers_v1?_name=&_type=Elite&_type_o=1" ],
+            [ "Deadly", "http://18.218.243.237:3000/rpc/tiers_v1?_name=&_type=Deadly&_type_o=" ],
+            [ "", ""] ,
+            [ "Regular", "http://18.218.243.237:3000/rpc/tiers_v1?_name=&_type=Regular&_type_o=" ],
+            [ "", ""] ,
+            [ "Guild 2", "http://18.218.243.237:3000/rpc/tiers_v1?_name=&_type=Guild&_type_o=1" ]
         ]
 );

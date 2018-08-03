@@ -15,37 +15,37 @@ INSERT INTO web.raids(name, type, type_o, size, size_o, AP, OS, MS, campaign, mo
 /**************************************************************************/
 /* Elite                                                                  */
 /**************************************************************************/
-, ('E. Bad Blood',        'elite', 1, 'small',    1, '',  '10000000000000', '35000000000000', '', 'Human, Elite')
-, ('E. Alchemist',        'elite', 1, 'small',    1, '',  '10000000000000', '40000000000000', '', 'Elite, Undead')
-, ('E. Kang-Gsod',        'elite', 1, 'large',    3, '',  '10000000000000', '90000000000000', '', 'Underground, Beast, Winter, Elite')
-, ('E. 5th Terror',       'elite', 0, 'gigantic', 6, '',  '100000000000',   '500000000000',   '', 'Elite , Abyssal , Aquatic , Festival , Terror')
-, ('E. Balor',            'elite', 0, 'colossal', 5, '',  '125000000000',   '500000000000',   '', 'Elite , Demon')
-, ('E. Bloodsuckers',     'elite', 0, 'small',    1, '',  '80000000000',    '120000000000',   '', 'Elite , Abyssal , Insect , (Bloodsucker)')
-, ('E. Butcher',          'elite', 0, 'small',    1, '',  '50000000000',    '50000000000',    '', 'Elite , Ogre , Nightmare Queen')
-, ('E. Caster',           'elite', 0, 'small',    1, '',  '60000000000',    '100000000000',   '', 'Elite , Undead , Underground , Nightmare Queen')
-, ('E. Marius',           'elite', 0, 'epic',     4, '',  '240000000000',   '20000000000000', '', 'Undead , Underground , Elite')
-, ('E. Corrupted Wilds',  'elite', 0, 'gigantic', 6, '',  '120000000000',   '10000000000000', '', 'Magical Creature , Beast , Elite')
-, ('E. Draconic Dreams',  'elite', 0, 'gigantic', 6, '',  '40000000000',    '2000000000000',  '', 'Dragon , Elite')
-, ('E. Funny Bones',      'elite', 0, 'medium',   2, '',  '70000000000',    '150000000000',   '', 'Elite , Undead')
-, ('E. Initiates',        'elite', 0, 'large',    3, '',  '120000000000',   '180000000000',   '', 'Elite , Abyssal , Aquatic')
-, ('E. Kanehuar Yachu',   'elite', 0, 'colossal', 5, '',  '125000000000',   '400000000000',   '', 'Elite , Giant , (Kanehuar)')
-, ('E. Karkata',          'elite', 0, 'colossal', 5, '',  '125000000000',   '300000000000',   '', 'Elite , Abyssal , Aquatic , Beast')
-, ('E. Killers',          'elite', 0, 'medium',   2, '',  '60000000000',    '60000000000',    '', 'Elite , Goblin , Orc , Nightmare Queen')
-, ('E. Lady Cecile',      'elite', 0, 'colossal', 5, '',  '120000000000',   '300000000000',   '', 'Elite , Undead , Underground , Nightmare Queen')
-, ('E. Malleus',          'elite', 0, 'epic',     4, '',  '100000000000',   '200000000000',   '', 'Elite , Beastman , Undead , Nightmare Queen')
-, ('E. Mangler',          'elite', 0, 'epic',     4, '',  '80000000000',    '150000000000',   '', 'Elite , Ogre , Nightmare Queen')
-, ('E. Murderer',         'elite', 0, 'large',    3, '',  '75000000000',    '100000000000',   '', 'Elite , Orc , Nightmare Queen')
-, ('E. Rannveig',         'elite', 0, 'epic',     4, '',  '50000000000',    '1000000000000',  '', 'Human , Winter , Elite')
-, ('E. Reaper',           'elite', 0, 'epic',     4, '',  '120000000000',   '180000000000',   '', 'Elite, Abyssal, Insect')
-, ('E. Riders',           'elite', 0, 'large',    3, '',  '80000000000',    '150000000000',   '', 'Elite, Goblin, Beast, Underground, Nightmare Queen')
-, ('E. Shadow Assassins', 'elite', 0, 'epic',     4, '',  '100000000000',   '40000000000000', '', 'Elite, Underground, Shadow Elf')
-, ('E. Slitherer',        'elite', 0, 'small',    1, '',  '80000000000',    '150000000000',   '', 'Elite, Abyssal, Aquatic, Dragon')
-, ('E. Umbra Spider',     'elite', 0, 'large',    3, '',  '300000000000',   '30000000000000', '', 'Beast, Shadow Elf, Magical Creature, Elite')
-, ('E. Warrior',          'elite', 0, 'small',    1, '',  '80000000000',    '100000000000',   '', 'Elite, Undead, Nightmare Queen')
-, ('E. Way Warden',       'elite', 0, 'colossal', 5, '',  '120000000000',   '10000000000000', '', 'Magical Creature, Elite')
-, ('E. Whispers',         'elite', 0, 'medium',   2, '',  '70000000000',    '125000000000',   '', 'Elite, Undead, Nightmare Queen')
-, ('E. Yule PB',          'elite', 0, 'large',    3, '',  '120000000000',   '255000000000',   '', 'Elite, Human, Winter')
-, ('E. Sanctuary',        'elite', 0, 'epic',     4, '',  '70000000000',    '300000000000',   '', 'Elite, Siege, Construct, Winter')
+, ('E. Bad Blood',        'elite', 1, 'small',    1, '', '10000000000000', '35000000000000', '', 'Human, Elite')
+, ('E. Alchemist',        'elite', 1, 'small',    1, '', '10000000000000', '40000000000000', '', 'Elite, Undead')
+, ('E. Kang-Gsod',        'elite', 1, 'large',    3, '', '10000000000000', '90000000000000', '', 'Underground, Beast, Winter, Elite')
+, ('E. 5th Terror',       'elite', 0, 'gigantic', 6, '', '100000000000',   '500000000000',   '', 'Elite , Abyssal , Aquatic , Festival , Terror')
+, ('E. Balor',            'elite', 0, 'colossal', 5, '', '125000000000',   '500000000000',   '', 'Elite , Demon')
+, ('E. Bloodsuckers',     'elite', 0, 'small',    1, '', '80000000000',    '120000000000',   '', 'Elite , Abyssal , Insect , (Bloodsucker)')
+, ('E. Butcher',          'elite', 0, 'small',    1, '', '50000000000',    '50000000000',    '', 'Elite , Ogre , Nightmare Queen')
+, ('E. Caster',           'elite', 0, 'small',    1, '', '60000000000',    '100000000000',   '', 'Elite , Undead , Underground , Nightmare Queen')
+, ('E. Marius',           'elite', 0, 'epic',     4, '', '240000000000',   '20000000000000', '', 'Undead , Underground , Elite')
+, ('E. Corrupted Wilds',  'elite', 0, 'gigantic', 6, '', '120000000000',   '10000000000000', '', 'Magical Creature , Beast , Elite')
+, ('E. Draconic Dreams',  'elite', 0, 'gigantic', 6, '', '40000000000',    '2000000000000',  '', 'Dragon , Elite')
+, ('E. Funny Bones',      'elite', 0, 'medium',   2, '', '70000000000',    '150000000000',   '', 'Elite , Undead')
+, ('E. Initiates',        'elite', 0, 'large',    3, '', '120000000000',   '180000000000',   '', 'Elite , Abyssal , Aquatic')
+, ('E. Kanehuar Yachu',   'elite', 0, 'colossal', 5, '', '125000000000',   '400000000000',   '', 'Elite , Giant , (Kanehuar)')
+, ('E. Karkata',          'elite', 0, 'colossal', 5, '', '125000000000',   '300000000000',   '', 'Elite , Abyssal , Aquatic , Beast')
+, ('E. Killers',          'elite', 0, 'medium',   2, '', '60000000000',    '60000000000',    '', 'Elite , Goblin , Orc , Nightmare Queen')
+, ('E. Lady Cecile',      'elite', 0, 'colossal', 5, '', '120000000000',   '300000000000',   '', 'Elite , Undead , Underground , Nightmare Queen')
+, ('E. Malleus',          'elite', 0, 'epic',     4, '', '100000000000',   '200000000000',   '', 'Elite , Beastman , Undead , Nightmare Queen')
+, ('E. Mangler',          'elite', 0, 'epic',     4, '', '80000000000',    '150000000000',   '', 'Elite , Ogre , Nightmare Queen')
+, ('E. Murderer',         'elite', 0, 'large',    3, '', '75000000000',    '100000000000',   '', 'Elite , Orc , Nightmare Queen')
+, ('E. Rannveig',         'elite', 0, 'epic',     4, '', '50000000000',    '1000000000000',  '', 'Human , Winter , Elite')
+, ('E. Reaper',           'elite', 0, 'epic',     4, '', '120000000000',   '180000000000',   '', 'Elite, Abyssal, Insect')
+, ('E. Riders',           'elite', 0, 'large',    3, '', '80000000000',    '150000000000',   '', 'Elite, Goblin, Beast, Underground, Nightmare Queen')
+, ('E. Shadow Assassins', 'elite', 0, 'epic',     4, '', '100000000000',   '40000000000000', '', 'Elite, Underground, Shadow Elf')
+, ('E. Slitherer',        'elite', 0, 'small',    1, '', '80000000000',    '150000000000',   '', 'Elite, Abyssal, Aquatic, Dragon')
+, ('E. Umbra Spider',     'elite', 0, 'large',    3, '', '300000000000',   '30000000000000', '', 'Beast, Shadow Elf, Magical Creature, Elite')
+, ('E. Warrior',          'elite', 0, 'small',    1, '', '80000000000',    '100000000000',   '', 'Elite, Undead, Nightmare Queen')
+, ('E. Way Warden',       'elite', 0, 'colossal', 5, '', '120000000000',   '10000000000000', '', 'Magical Creature, Elite')
+, ('E. Whispers',         'elite', 0, 'medium',   2, '', '70000000000',    '125000000000',   '', 'Elite, Undead, Nightmare Queen')
+, ('E. Yule PB',          'elite', 0, 'large',    3, '', '120000000000',   '255000000000',   '', 'Elite, Human, Winter')
+, ('E. Sanctuary',        'elite', 0, 'epic',     4, '', '70000000000',    '300000000000',   '', 'Elite, Siege, Construct, Winter')
 /**************************************************************************/
 /* Regular                                                                */
 /**************************************************************************/
@@ -61,11 +61,10 @@ INSERT INTO web.raids(name, type, type_o, size, size_o, AP, OS, MS, campaign, mo
 /**************************************************************************/
 /* Guild                                                                  */
 /**************************************************************************/
---, ('E. Devourer',         'guild',   'epic',     '',  '',   '', '', '')
+, ('E. Devourer',         'guild',   1, 'colossal', 5, '', '120000000000', '200000000000', '', 'Elite , Guild , Abyssal , Insect , Beast')
 ;
 
 /*
-, ('E. ', 'elite',   'epic',     '',  '',   '', '', '')
 1k = 000
 1m = 000000
 1b = 000000000
@@ -779,6 +778,21 @@ INSERT INTO web.tiers(name, difficulty, damage, common, uncommon, rare, epic, le
 , ('Underworld', 'nightmare', '10000000000000', '', '', '', '', '', '286344')
 , ('Underworld', 'nightmare', '20000000000000', '', '', '', '', '', '488394')
 , ('Underworld', 'nightmare', '30000000000000', '', '', '', '', '', '515100')
+----------------------------------------------------------------------------
+, ('E. Devourer', 'nightmare', '15000000000',  '', '', '', '', '', '400')
+, ('E. Devourer', 'nightmare', '20000000000',  '', '', '', '', '', '550')
+, ('E. Devourer', 'nightmare', '25000000000',  '', '', '', '', '', '700')
+, ('E. Devourer', 'nightmare', '30000000000',  '', '', '', '', '', '1000')
+, ('E. Devourer', 'nightmare', '40000000000',  '', '', '', '', '', '1400')
+, ('E. Devourer', 'nightmare', '50000000000',  '', '', '', '', '', '1800')
+, ('E. Devourer', 'nightmare', '60000000000',  '', '', '', '', '', '2400')
+, ('E. Devourer', 'nightmare', '70000000000',  '', '', '', '', '', '2900')
+, ('E. Devourer', 'nightmare', '80000000000',  '', '', '', '', '', '3400')
+, ('E. Devourer', 'nightmare', '90000000000',  '', '', '', '', '', '4000')
+, ('E. Devourer', 'nightmare', '100000000000', '', '', '', '', '', '4550')
+, ('E. Devourer', 'nightmare', '120000000000', '', '', '', '', '', '5500')
+, ('E. Devourer', 'nightmare', '150000000000', '', '', '', '', '', '6000')
+, ('E. Devourer', 'nightmare', '200000000000', '', '', '', '', '', '7000')
 /*
 , ('', 'nightmare', '', '', '', '', '', '', '')
 1k = 000
